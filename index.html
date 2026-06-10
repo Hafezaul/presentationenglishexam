@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Journey of Programming Languages</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        tech: {
+                            deep: '#030712',
+                            card: '#0B1329',
+                            electric: '#00F5D4',
+                            blueAccent: '#3B82F6',
+                            royal: '#1E3A8A',
+                            darkBlue: '#111827',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans text-gray-100 grid-bg">
+
+    <!-- Ambient blobs -->
+    <div class="fixed top-10 left-10 w-64 h-64 md:w-96 md:h-96 bg-blue-900/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="fixed bottom-10 right-10 w-64 h-64 md:w-96 md:h-96 bg-teal-900/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="app-shell relative z-10">
+
+        <!-- ══ HEADER ══ -->
+        <header class="app-header max-w-7xl w-full mx-auto">
+            <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-tech-electric animate-pulse shadow-[0_0_8px_#00F5D4] flex-shrink-0"></span>
+                <span class="font-display font-semibold label-xs tracking-widest text-slate-400 uppercase hidden sm:inline">Interactive Presenter</span>
+            </div>
+            <div class="flex items-center gap-2 sm:gap-4">
+                <div class="bg-tech-card/80 backdrop-blur-md px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border border-slate-800 label-xs text-slate-400 font-mono">
+                    Slide <span id="currentSlideIndicator" class="text-tech-electric font-bold">1</span>/<span id="totalSlidesLabel">5</span>
+                </div>
+                <button id="fullscreenBtn" class="text-slate-400 hover:text-white bg-tech-card hover:bg-slate-800 p-1.5 sm:p-2 rounded-lg border border-slate-800 transition" title="Toggle Fullscreen">
+                    <i class="fa-solid fa-expand text-xs sm:text-sm"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- ══ SLIDE WRAPPER ══ -->
+        <div class="slide-wrapper max-w-7xl w-full mx-auto">
+
+            <!-- ━━ SLIDE 1: COVER ━━ -->
+            <section id="slide1" class="slide bg-tech-card/90 backdrop-blur-md border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+                <!-- Decorative code -->
+                <div class="absolute top-4 right-4 font-mono label-xs text-blue-500/20 select-none text-right hidden lg:block leading-5">
+                    <div>#include &lt;stdio.h&gt;</div>
+                    <div>int main() {</div>
+                    <div class="text-teal-500/20">&nbsp;&nbsp;printf("Hello World\n");</div>
+                    <div>&nbsp;&nbsp;return 0;</div>
+                    <div>}</div>
+                </div>
+                <div class="absolute -left-12 sm:-left-20 top-1/3 opacity-5 select-none pointer-events-none font-mono text-tech-electric" style="font-size: clamp(6rem, 20vw, 16rem);">{}</div>
+
+                <div class="slide-inner card-pad flex flex-col justify-between h-full">
+                    <!-- Main content -->
+                    <div class="flex-1 flex flex-col justify-center gap-4">
+                        <div>
+                            <span class="px-2 py-1 rounded bg-blue-500/10 text-blue-400 font-mono label-xs border border-blue-500/20 uppercase tracking-widest">Presenter System v2.6</span>
+                        </div>
+                        <h1 class="font-display font-extrabold title-xl tracking-tight text-white mt-2">
+                            The Journey of <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-tech-electric text-glow-blue">Programming Languages</span>
+                        </h1>
+                        <p class="font-display subtitle font-light text-slate-300 tracking-wide">From C to JavaScript</p>
+
+                        <!-- Speaker badge -->
+                        <div class="flex items-center gap-3 bg-slate-950/60 w-fit px-3 py-2 rounded-xl border border-slate-800 mt-2">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-tech-electric flex items-center justify-center text-white font-bold flex-shrink-0">F</div>
+                            <div>
+                                <p class="label-xs text-slate-400">Presentation by</p>
+                                <p class="body-sm font-semibold text-white">Faris Iskandar Hafidz</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer badges -->
+                    <div class="border-t border-slate-800/80 pt-3 mt-3 flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+                            <span class="label-xs text-slate-500 uppercase tracking-widest font-mono hidden sm:inline">Tech Stack:</span>
+                            <div class="flex gap-2">
+                                <div class="flex items-center gap-1 px-2 py-1 rounded bg-blue-500/10 border border-blue-500/20 label-xs text-blue-400 font-mono font-semibold">
+                                    <i class="fa-solid fa-code"></i> C
+                                </div>
+                                <div class="flex items-center gap-1 px-2 py-1 rounded bg-indigo-500/10 border border-indigo-500/20 label-xs text-indigo-400 font-mono font-semibold">
+                                    <i class="fa-brands fa-python"></i> Python
+                                </div>
+                                <div class="flex items-center gap-1 px-2 py-1 rounded bg-yellow-500/10 border border-yellow-500/20 label-xs text-yellow-400 font-mono font-semibold">
+                                    <i class="fa-brands fa-js"></i> JS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1.5 label-xs text-slate-500 font-mono">
+                            <span>Timeline →</span>
+                            <i class="fa-solid fa-arrow-right text-tech-electric animate-bounce"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ━━ SLIDE 2: WHY PROGRAMMING LANGUAGES ━━ -->
+            <section id="slide2" class="slide bg-tech-card/90 backdrop-blur-md border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+                <div class="slide-inner card-pad flex flex-col gap-4 h-full">
+                    <div class="flex-shrink-0">
+                        <span class="text-tech-electric label-xs font-mono uppercase tracking-widest">01. Purpose</span>
+                        <h2 class="font-display font-bold title-lg text-white mt-1">Why Programming Languages?</h2>
+                    </div>
+
+                    <div class="two-col two-col-s2 flex-1 min-h-0 items-center">
+
+                        <!-- Flow diagram -->
+                        <div class="bg-slate-950/60 rounded-2xl border border-slate-800 card-pad relative">
+                            <div class="absolute top-2 right-3 font-mono label-xs text-teal-400/30 hidden sm:block">01001000 01101001</div>
+                            <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+
+                                <div class="flex flex-col items-center bg-slate-900 px-3 py-3 rounded-xl border border-slate-800 w-full sm:w-auto min-w-0 hover:border-blue-500/40 transition">
+                                    <div class="w-9 h-9 rounded-full bg-blue-500/10 flex items-center justify-center mb-1"><i class="fa-solid fa-user-astronaut text-blue-400"></i></div>
+                                    <span class="font-semibold body-sm text-white">Human</span>
+                                    <span class="label-xs text-slate-400">Wants to solve</span>
+                                </div>
+
+                                <div class="flex flex-col items-center text-center gap-0.5">
+                                    <i class="fa-solid fa-arrow-down-long sm:hidden text-blue-500"></i>
+                                    <i class="fa-solid fa-arrow-right-long hidden sm:block text-blue-500 text-lg"></i>
+                                    <span class="label-xs font-mono text-slate-500">Translate</span>
+                                </div>
+
+                                <div class="flex flex-col items-center bg-slate-900 px-3 py-3 rounded-xl border border-tech-electric/40 w-full sm:w-auto shadow-[0_0_10px_rgba(0,245,212,0.1)]">
+                                    <div class="w-9 h-9 rounded-full bg-teal-500/10 flex items-center justify-center mb-1"><i class="fa-solid fa-code text-tech-electric animate-pulse"></i></div>
+                                    <span class="font-semibold body-sm text-white font-mono">Language</span>
+                                    <span class="label-xs text-teal-400 font-mono">Abstraction</span>
+                                </div>
+
+                                <div class="flex flex-col items-center text-center gap-0.5">
+                                    <i class="fa-solid fa-arrow-down-long sm:hidden text-blue-500"></i>
+                                    <i class="fa-solid fa-arrow-right-long hidden sm:block text-blue-500 text-lg"></i>
+                                    <span class="label-xs font-mono text-slate-500">Execute</span>
+                                </div>
+
+                                <div class="flex flex-col items-center bg-slate-900 px-3 py-3 rounded-xl border border-slate-800 w-full sm:w-auto hover:border-blue-500/40 transition">
+                                    <div class="w-9 h-9 rounded-full bg-indigo-500/10 flex items-center justify-center mb-1"><i class="fa-solid fa-microchip text-indigo-400"></i></div>
+                                    <span class="font-semibold body-sm text-white">Computer</span>
+                                    <span class="label-xs text-slate-400">Binary Hardware</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Use cases -->
+                        <div class="flex flex-col gap-2 sm:gap-3">
+                            <div class="flex items-center gap-3 bg-slate-900/60 card-pad rounded-xl border border-slate-800/80 hover:border-blue-500/30 transition">
+                                <div class="w-9 h-9 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 flex-shrink-0"><i class="fa-solid fa-window-restore"></i></div>
+                                <div>
+                                    <h3 class="font-semibold body-sm text-white">Applications</h3>
+                                    <p class="label-xs text-slate-400">Complex desktop tools & backends</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 bg-slate-900/60 card-pad rounded-xl border border-slate-800/80 hover:border-teal-500/30 transition">
+                                <div class="w-9 h-9 rounded-lg bg-teal-500/10 flex items-center justify-center text-tech-electric flex-shrink-0"><i class="fa-solid fa-globe"></i></div>
+                                <div>
+                                    <h3 class="font-semibold body-sm text-white">Websites</h3>
+                                    <p class="label-xs text-slate-400">Dynamic, modern user interfaces</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 bg-slate-900/60 card-pad rounded-xl border border-slate-800/80 hover:border-indigo-500/30 transition">
+                                <div class="w-9 h-9 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 flex-shrink-0"><i class="fa-solid fa-gamepad"></i></div>
+                                <div>
+                                    <h3 class="font-semibold body-sm text-white">Games</h3>
+                                    <p class="label-xs text-slate-400">Immersive physics and visual graphics</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-shrink-0 border-t border-slate-800/80 pt-3 flex justify-between items-center">
+                        <span class="label-xs text-slate-500">Programming bridges human concepts to machine execution.</span>
+                        <span class="font-mono label-xs text-tech-electric/80 hidden sm:inline">01001000 (Hi)</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ━━ SLIDE 3: EVOLUTION TIMELINE ━━ -->
+            <section id="slide3" class="slide bg-tech-card/90 backdrop-blur-md border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+                <div class="slide-inner card-pad flex flex-col gap-4 h-full">
+                    <div class="flex-shrink-0">
+                        <span class="text-tech-electric label-xs font-mono uppercase tracking-widest">02. History</span>
+                        <h2 class="font-display font-bold title-lg text-white mt-1">Evolution Timeline</h2>
+                    </div>
+
+                    <div class="flex-1 min-h-0 flex flex-col justify-center">
+                        <!-- Timeline -->
+                        <div class="timeline-container">
+                            <ul class="timeline-flow list-none m-0">
+
+                                <li class="timeline-item">
+                                    <div class="node border-2 border-teal-400 text-teal-400 shadow-[0_0_8px_rgba(0,245,212,0.3)]">ML</div>
+                                    <div>
+                                        <span class="font-semibold body-sm text-white block">Machine Lang</span>
+                                        <span class="label-xs text-slate-500 font-mono">0s & 1s</span>
+                                        <span class="label-xs text-teal-400/70 font-mono ml-2 sm:hidden">01010101</span>
+                                    </div>
+                                </li>
+
+                                <li class="timeline-item">
+                                    <div class="node border-2 border-blue-400 text-blue-400">ASM</div>
+                                    <div>
+                                        <span class="font-semibold body-sm text-white block">Assembly</span>
+                                        <span class="label-xs text-slate-500 font-mono">Mnemonics</span>
+                                    </div>
+                                </li>
+
+                                <li class="timeline-item">
+                                    <div class="node border-2 border-indigo-400 text-indigo-400">FTN</div>
+                                    <div>
+                                        <span class="font-semibold body-sm text-white block">FORTRAN</span>
+                                        <span class="label-xs text-indigo-400 font-mono">1957 · Science</span>
+                                    </div>
+                                </li>
+
+                                <li class="timeline-item">
+                                    <div class="node border-2 border-slate-600 text-slate-500">COB</div>
+                                    <div>
+                                        <span class="font-semibold body-sm text-white block">COBOL</span>
+                                        <span class="label-xs text-slate-500 font-mono">1959 · Business</span>
+                                    </div>
+                                </li>
+
+                                <li class="timeline-item">
+                                    <div class="node border-2 border-rose-500 text-rose-400 shadow-[0_0_8px_rgba(244,63,94,0.25)]">C</div>
+                                    <div>
+                                        <span class="font-semibold body-sm text-white block">C Language</span>
+                                        <span class="label-xs text-rose-400 font-mono">1972 · Fast &amp; Flex</span>
+                                    </div>
+                                </li>
+
+                                <li class="timeline-item">
+                                    <div class="node border-2 border-yellow-500 text-yellow-400">PY</div>
+                                    <div>
+                                        <span class="font-semibold body-sm text-white block">Python</span>
+                                        <span class="label-xs text-yellow-400 font-mono">1991 · Easy/Clean</span>
+                                    </div>
+                                </li>
+
+                                <li class="timeline-item">
+                                    <div class="node border-2 border-tech-electric text-tech-electric shadow-[0_0_10px_#00f5d4]">JS</div>
+                                    <div>
+                                        <span class="font-semibold body-sm text-white block">JavaScript</span>
+                                        <span class="label-xs text-tech-electric font-mono">1995 · Web/UX</span>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <!-- Info box -->
+                        <div class="bg-slate-950/60 card-pad rounded-xl border border-slate-800/80 mt-4 flex flex-wrap items-center justify-between gap-3">
+                            <div class="flex items-center gap-2.5 flex-1 min-w-0">
+                                <span class="w-2 h-2 rounded-full bg-tech-electric flex-shrink-0"></span>
+                                <p class="label-xs text-slate-400"><strong>Evolutionary Jump:</strong> Abstraction levels rise from binary machine configs to human-readable dynamic engines.</p>
+                            </div>
+                            <div class="flex gap-1.5 font-mono label-xs bg-slate-900/80 px-2 py-1.5 rounded border border-slate-800 flex-shrink-0">
+                                <span class="text-slate-600">0101</span>
+                                <i class="fa-solid fa-arrow-right text-teal-400 px-1"></i>
+                                <span class="text-teal-400 font-bold">C</span>
+                                <i class="fa-solid fa-arrow-right text-teal-400 px-1"></i>
+                                <span class="text-yellow-400 font-bold">JS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-shrink-0 border-t border-slate-800/80 pt-3 flex justify-between items-center">
+                        <span class="label-xs text-slate-500">The rise of abstraction from raw machine inputs.</span>
+                        <span class="font-mono label-xs text-slate-400 hidden sm:inline">1957 – 1995 Transformation</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ━━ SLIDE 4: PROGRAMMING TODAY ━━ -->
+            <section id="slide4" class="slide bg-tech-card/90 backdrop-blur-md border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+                <div class="slide-inner card-pad flex flex-col gap-4 h-full">
+                    <div class="flex-shrink-0">
+                        <span class="text-tech-electric label-xs font-mono uppercase tracking-widest">03. Current Era</span>
+                        <h2 class="font-display font-bold title-lg text-white mt-1">Programming Today</h2>
+                    </div>
+
+                    <div class="today-grid flex-1 min-h-0 content-start">
+
+                        <div class="bg-slate-950/50 hover:bg-slate-900/60 card-pad rounded-2xl border border-slate-800/80 hover:border-blue-500/30 transition-all flex flex-col items-center text-center group">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-globe text-xl"></i>
+                            </div>
+                            <h3 class="font-display font-semibold body-sm text-white mb-1">Web Development</h3>
+                            <p class="label-xs text-slate-400 leading-relaxed">Powers accessible responsive ecosystems globally via rich libraries.</p>
+                        </div>
+
+                        <div class="bg-slate-950/50 hover:bg-slate-900/60 card-pad rounded-2xl border border-slate-800/80 hover:border-teal-500/30 transition-all flex flex-col items-center text-center group">
+                            <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center text-tech-electric mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-brain text-xl animate-pulse"></i>
+                            </div>
+                            <h3 class="font-display font-semibold body-sm text-white mb-1">Artificial Intelligence</h3>
+                            <p class="label-xs text-slate-400 leading-relaxed">Trains neural connections and deep-learning model architectures.</p>
+                        </div>
+
+                        <div class="bg-slate-950/50 hover:bg-slate-900/60 card-pad rounded-2xl border border-slate-800/80 hover:border-indigo-500/30 transition-all flex flex-col items-center text-center group">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-gamepad text-xl"></i>
+                            </div>
+                            <h3 class="font-display font-semibold body-sm text-white mb-1">Gaming</h3>
+                            <p class="label-xs text-slate-400 leading-relaxed">Executes real-time 3D environments, shading, and custom physics.</p>
+                        </div>
+
+                        <div class="bg-slate-950/50 hover:bg-slate-900/60 card-pad rounded-2xl border border-slate-800/80 hover:border-purple-500/30 transition-all flex flex-col items-center text-center group">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-mobile-screen-button text-xl"></i>
+                            </div>
+                            <h3 class="font-display font-semibold body-sm text-white mb-1">Mobile Apps</h3>
+                            <p class="label-xs text-slate-400 leading-relaxed">Operates compact utility APIs across touch-screen and IoT systems.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="flex-shrink-0 border-t border-slate-800/80 pt-3 flex justify-between items-center">
+                        <span class="label-xs text-slate-500">Programming dominates every modern high-tech pillar.</span>
+                        <span class="font-mono label-xs text-slate-400 hidden sm:inline">Web • AI • Gaming • Mobile</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ━━ SLIDE 5: CONCLUSION ━━ -->
+            <section id="slide5" class="slide bg-tech-card/90 backdrop-blur-md border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+                <div class="slide-inner card-pad flex flex-col gap-4 h-full">
+                    <div class="flex-shrink-0">
+                        <span class="text-tech-electric label-xs font-mono uppercase tracking-widest">04. Conclusion</span>
+                        <h2 class="font-display font-bold title-lg text-white mt-1">Key Takeaways</h2>
+                    </div>
+
+                    <div class="two-col two-col-s5 flex-1 min-h-0 items-center">
+
+                        <!-- Takeaways -->
+                        <div class="conclusion-grid">
+                            <div class="bg-slate-950/50 card-pad rounded-xl border border-slate-800 hover:border-teal-500/30 transition">
+                                <span class="text-tech-electric font-semibold body-sm flex items-center gap-1.5 mb-1"><i class="fa-solid fa-circle-check"></i> Easier</span>
+                                <p class="label-xs text-slate-400">High-level syntax cuts down human memory load.</p>
+                            </div>
+                            <div class="bg-slate-950/50 card-pad rounded-xl border border-slate-800 hover:border-blue-500/30 transition">
+                                <span class="text-blue-400 font-semibold body-sm flex items-center gap-1.5 mb-1"><i class="fa-solid fa-circle-check"></i> Faster</span>
+                                <p class="label-xs text-slate-400">Compilers optimize byte compilation maps rapidly.</p>
+                            </div>
+                            <div class="bg-slate-950/50 card-pad rounded-xl border border-slate-800 hover:border-indigo-500/30 transition">
+                                <span class="text-indigo-400 font-semibold body-sm flex items-center gap-1.5 mb-1"><i class="fa-solid fa-circle-check"></i> Powerful</span>
+                                <p class="label-xs text-slate-400">Massive frameworks let devs build complex features fast.</p>
+                            </div>
+                            <div class="bg-slate-950/50 card-pad rounded-xl border border-slate-800 hover:border-purple-500/30 transition">
+                                <span class="text-purple-400 font-semibold body-sm flex items-center gap-1.5 mb-1"><i class="fa-solid fa-circle-check"></i> Accessible</span>
+                                <p class="label-xs text-slate-400">Open packages simplify code creation entry barriers.</p>
+                            </div>
+                        </div>
+
+                        <!-- Evolutionary chain -->
+                        <div class="flex flex-col justify-center items-center bg-slate-950/40 card-pad rounded-2xl border border-slate-800/80">
+                            <h3 class="text-slate-400 label-xs font-mono uppercase tracking-widest mb-3">Evolutionary Cycle</h3>
+                            <div class="flex flex-col items-center gap-2 w-full max-w-xs">
+                                <div class="w-full bg-slate-900 border border-slate-800 py-2 px-3 rounded-xl text-center label-xs font-mono text-slate-400 flex items-center justify-between">
+                                    <span>01010101 (Binary)</span>
+                                    <i class="fa-solid fa-microchip text-slate-600"></i>
+                                </div>
+                                <i class="fa-solid fa-down-long text-blue-500 text-xs"></i>
+                                <div class="w-full bg-blue-950/40 border border-blue-900/60 py-2 px-3 rounded-xl text-center label-xs font-mono text-blue-400 flex items-center justify-between shadow-[0_0_8px_rgba(59,130,246,0.12)]">
+                                    <span>C Programming</span>
+                                    <i class="fa-solid fa-code text-blue-400"></i>
+                                </div>
+                                <i class="fa-solid fa-down-long text-yellow-500 text-xs"></i>
+                                <div class="w-full bg-yellow-950/20 border border-yellow-900/40 py-2 px-3 rounded-xl text-center label-xs font-mono text-yellow-500 flex items-center justify-between">
+                                    <span>Python Script</span>
+                                    <i class="fa-brands fa-python text-yellow-500"></i>
+                                </div>
+                                <i class="fa-solid fa-down-long text-tech-electric text-xs animate-pulse"></i>
+                                <div class="w-full bg-teal-950/40 border border-teal-500/50 py-2 px-3 rounded-xl text-center label-xs font-mono text-tech-electric flex items-center justify-between shadow-[0_0_10px_rgba(0,245,212,0.2)]">
+                                    <span>JavaScript Hub</span>
+                                    <i class="fa-brands fa-js text-tech-electric"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="flex-shrink-0 border-t border-slate-800/80 pt-3 flex justify-between items-center">
+                        <span class="body-sm font-medium text-slate-300">Programming languages continue to evolve.</span>
+                        <span class="font-mono label-xs text-slate-400 hidden sm:inline">Conclusion · Future Ahead</span>
+                    </div>
+                </div>
+            </section>
+
+        </div><!-- end slide-wrapper -->
+
+        <!-- ══ FOOTER ══ -->
+        <footer class="app-footer max-w-7xl w-full mx-auto">
+            <!-- Progress bar -->
+            <div class="w-full bg-slate-900 h-1 rounded-full mb-2 sm:mb-3 overflow-hidden">
+                <div id="progressBar" class="h-full bg-gradient-to-r from-blue-500 to-tech-electric rounded-full transition-all duration-300" style="width: 20%;"></div>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <div class="hidden sm:flex items-center gap-3 label-xs text-slate-500 font-mono">
+                    <span><kbd>←</kbd> Prev</span>
+                    <span><kbd>→</kbd> / <kbd>Space</kbd> Next</span>
+                </div>
+                <div class="sm:hidden label-xs text-slate-500 font-mono">Swipe to navigate</div>
+
+                <div class="flex items-center gap-2">
+                    <button id="prevBtn" class="px-3 sm:px-4 py-1.5 sm:py-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl text-slate-300 label-xs font-semibold hover:text-white transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-chevron-left"></i> <span class="hidden xs:inline">Prev</span>
+                    </button>
+                    <button id="nextBtn" class="px-3 sm:px-5 py-1.5 sm:py-2 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 text-white rounded-xl label-xs font-semibold shadow-lg transition flex items-center gap-1.5">
+                        Next <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
+
+<!-- 
+Akhirnya kita selesai dengan ujian bahasa Inggris ini di ASAT SMK IT Smart Informatika, nilai yang saya raih ada 90 nilai yang dikatakan perfect untuk level bahasa Inggris yang saya ambil :)
+-->
